@@ -1,86 +1,105 @@
 # Kirusigan Thevarasa — Portfolio
 
-A personal portfolio site built with React, Vite, and Tailwind CSS, styled after
-the layout/design of https://piratheepan.vercel.app/ (theme toggle, gradient hero,
-project cards, skill cloud, contact form).
+A modern personal portfolio built with **React + Vite + Tailwind CSS**.
 
-## Run it in VS Code
+It showcases:
+- Professional summary and contact links
+- Selected projects (SmartJob, Serani AI, NextGen, Inventory Management System)
+- Technical skills grouped by domain
+- Education and certifications
+- Resume download
+- Contact form integration (Formspree)
 
-1. Open this folder in VS Code (`File → Open Folder…`).
-2. Open a terminal in VS Code (`` Ctrl+` ``) and install dependencies:
+---
 
-   ```bash
-   npm install
-   ```
+## Tech stack
 
-3. Start the dev server:
+- **Frontend:** React 18, Vite 5
+- **Styling:** Tailwind CSS 3, custom animations, glassmorphism UI
+- **Icons:** lucide-react
+- **Build tooling:** PostCSS, Autoprefixer
 
-   ```bash
-   npm run dev
-   ```
+---
 
-4. Open the URL it prints (usually **http://localhost:5173**) in your browser.
-   The page hot-reloads as you edit files.
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+Open: `http://localhost:5173`
+
+---
 
 ## Build for production
 
 ```bash
 npm run build
-npm run preview   # preview the production build locally
+npm run preview
 ```
 
-The production files land in `dist/`, ready to deploy (e.g. to Vercel or Netlify).
+- Production output is generated in `dist/`.
+- You can deploy `dist/` to platforms like **Vercel** or **Netlify**.
 
-## Editing your content
+---
 
-Everything — name, bio, projects, skills, education, certifications, and
-contact details — lives in plain data arrays near the top of `src/App.jsx`
-(`PROJECTS`, `SKILL_GROUPS`, `EDUCATION`, `CERTIFICATIONS`, `CONTACT`). Edit
-those and the page updates automatically.
+## Customize portfolio content
 
-Images and your resume PDF live in `src/assets/` and `public/`:
-- `src/assets/profile.jpg` — hero photo
-- `src/assets/serani.jpg`, `src/assets/nextgen.jpg` — project screenshots
-- `public/Kirusigan_Thevarasa_CV.pdf` — the file the "Resume" button downloads
+Main content is managed in:
+- `src/App.jsx`
 
-## Making the contact form actually send email
+Update these sections directly in `App.jsx`:
+- `PROJECTS`
+- `SKILL_GROUPS`
+- `EDUCATION`
+- `CERTIFICATIONS`
+- `CONTACT`
 
-Browsers can't send email directly from JavaScript for security reasons —
-that's why a `mailto:` link has to hand off to your mail app (the "opens in
-Chrome/Mail" prompt you don't want). To send the message straight from the
-page with no popup, this form posts to **Formspree**, a free service that
-forwards submissions to your inbox:
+Static assets:
+- `src/assets/profile.jpg`
+- `src/assets/serani.jpg`
+- `src/assets/nextgen.jpg`
+- `public/Kirusigan_Thevarasa_CV.pdf`
 
-1. Go to https://formspree.io and sign up free (no credit card).
-2. Create a new form and set the destination to `tkirusigan@gmail.com`.
-   Confirm the verification email Formspree sends you.
-3. Copy the form's endpoint — it looks like `https://formspree.io/f/abcdwxyz`.
-4. Open `src/App.jsx`, find the `FORM_ENDPOINT` constant near the top, and
-   paste your real endpoint in place of `https://formspree.io/f/YOUR_FORM_ID`.
-5. Save, restart `npm run dev`, and test the form — submissions land directly
-   in your inbox, no app switch.
+---
 
-The free Formspree plan covers 50 submissions/month, plenty for a personal
-portfolio.
+## Contact form setup (Formspree)
 
-## Theme toggle
+To receive messages directly to your email:
 
-The Light / Dark / System control in the nav bar switches Tailwind's `dark:`
-classes and remembers your choice in `localStorage`.
+1. Create a free form at [Formspree](https://formspree.io/).
+2. Copy your endpoint (example: `https://formspree.io/f/abcdwxyz`).
+3. In `src/App.jsx`, replace:
+   - `FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID"`
+4. Restart the dev server and test the form.
+
+---
+
+## Available scripts
+
+```bash
+npm run dev      # start development server
+npm run build    # create production build
+npm run preview  # preview production build
+```
+
+---
 
 ## Project structure
 
-```
+```text
+.
+├── public/
+│   └── Kirusigan_Thevarasa_CV.pdf
+├── src/
+│   ├── assets/
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
 ├── index.html
 ├── package.json
 ├── postcss.config.js
 ├── tailwind.config.js
-├── vite.config.js
-├── public/
-│   └── Kirusigan_Thevarasa_CV.pdf
-└── src/
-    ├── App.jsx          # the whole page
-    ├── index.css        # Tailwind + small global styles
-    ├── main.jsx         # React entry point
-    └── assets/          # photo + project images
+└── vite.config.js
 ```
