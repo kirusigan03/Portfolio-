@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-body text-slate-900 antialiased;
+}
+
+.dark body {
+  @apply text-slate-100;
+}
+
+::selection {
+  background: #6d5bf6;
+  color: #fff;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #6d5bf6, #a855f7, #ec4899);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 6s ease infinite;
+}
+
+/* -------------------------------------------------- */
+/* Animated gradient page background                   */
+/* -------------------------------------------------- */
+
+.app-bg {
+  background: linear-gradient(120deg, #eef2ff 0%, #f5f3ff 25%, #fdf2f8 50%, #eff6ff 75%, #eef2ff 100%);
+  background-size: 300% 300%;
+  animation: gradient-pan 22s ease infinite;
+}
+
+.dark .app-bg {
+  background: linear-gradient(120deg, #0b0a1f 0%, #150f30 25%, #1a0f2e 50%, #0c1330 75%, #0b0a1f 100%);
+  background-size: 300% 300%;
+  animation: gradient-pan 22s ease infinite;
+}
+
+@keyframes gradient-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.dotted-bg {
+  background-image: radial-gradient(rgba(109, 91, 246, 0.18) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* -------------------------------------------------- */
+/* Glassmorphism                                        */
+/* -------------------------------------------------- */
+
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.dark .glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.dark .glass-strong {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.dark .glass-nav {
+  background: rgba(10, 8, 25, 0.5);
+}
+
+/* -------------------------------------------------- */
+/* Floating orbs / icons                                */
+/* -------------------------------------------------- */
+
+@keyframes float-a {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(10px, -26px) rotate(6deg); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-14px, -18px) rotate(-5deg); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(12px, 20px) rotate(4deg); }
+}
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+@keyframes blob-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -40px) scale(1.15); }
+}
+@keyframes blob-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, 50px) scale(1.1); }
+}
+@keyframes blob-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 40px) scale(0.95); }
+}
+
+.animate-float-a { animation: float-a 9s ease-in-out infinite; }
+.animate-float-b { animation: float-b 11s ease-in-out infinite; }
+.animate-float-c { animation: float-c 8s ease-in-out infinite; }
+.animate-drift { animation: drift 7s ease-in-out infinite; }
+.animate-blob-a { animation: blob-a 16s ease-in-out infinite; }
+.animate-blob-b { animation: blob-b 20s ease-in-out infinite; }
+.animate-blob-c { animation: blob-c 18s ease-in-out infinite; }
+
+/* -------------------------------------------------- */
+/* Scroll reveal                                        */
+/* -------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-a, .animate-float-b, .animate-float-c, .animate-drift,
+  .animate-blob-a, .animate-blob-b, .animate-blob-c,
+  .app-bg, .text-gradient {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
